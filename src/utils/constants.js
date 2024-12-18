@@ -1,5 +1,5 @@
 
-export const BASE_URL = 'https://vendora-api.up.railway.app/api/v1/';
-export const SERVER_URL = 'https://vendora-api.up.railway.app/'
+export const BASE_URL = import.meta.env.VITE_BASE_URL;
+export const SERVER_URL = import.meta.env.VITE_REACT_APP_SERVER_URL
 
-export const PAYPAL_CLIENT_ID = 'AXRZITnzFseDpnvxmtEFoS3lRXlID8HNYXgAQ3l19QLtD2PbNBT1-tXMbroUiHtlLvarFqjAR3Bnmep1'
+export const PAYPAL_CLIENT_ID = import.meta.env.VITE_PAYPAL_CLIENT_ID
