@@ -236,7 +236,7 @@ const AddProduct = () => {
             <div className="container">
                 <form
                 encType="multipart/form-data" 
-                onSubmit={handleSubmit}
+                onSubmit={(event)=> handleSubmit(event)}
                 className="main-body">
                     <ul
                     className="nav nav-pills mb-3 d-flex justify-content-center mt-5"
@@ -488,6 +488,7 @@ const AddProduct = () => {
                                                 
                                                 <div  className='mt-4 mb-2'>
                                                     <button
+                                                        type="button"
                                                         className="btn btn-danger"
                                                         onClick={() => handleRemove(index, setGallery)}>
                                                         <i className="fas fa-trash" /> Remove
@@ -496,7 +497,8 @@ const AddProduct = () => {
                                             </div>
                                         </div>
                                 ))}
-                                <button 
+                                <button
+                                type="button" 
                                 onClick={() => handleAddMore(setGallery)}
                                 className="btn btn-primary mt-5">
                                     <i className="fas fa-plus" /> Add Image
@@ -547,6 +549,7 @@ const AddProduct = () => {
                                         </div>
                                         <div className="col-lg-2">
                                             <button 
+                                            type="button"
                                             className="btn btn-danger mt-4"
                                             onClick={()=> handleRemove(index, setSpecifications)}>
                                                 <i className="fas fa-trash" /> Remove
@@ -558,52 +561,10 @@ const AddProduct = () => {
                                         <h4 className=''>No Specifications Added.</h4>
                                     )}
                                     <button className="btn btn-primary mt-5"
+                                    type="button"
                                     onClick={()=>handleAddMore(setSpecifications)}>
                                         <i className="fas fa-plus" /> Add Specifications
                                     </button>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div
-                        className="tab-pane fade"
-                        id="pills-contact"
-                        role="tabpanel"
-                        aria-labelledby="pills-contact-tab"
-                        >
-                        <div className="row gutters-sm shadow p-4 rounded">
-                            <h4 className="mb-4">Size</h4>
-                            <div className="col-md-12">
-                            <div className="card mb-3">
-                                <div className="card-body">
-                                <div className="row text-dark">
-                                    <div className="col-lg-6 mb-2">
-                                    <label htmlFor="" className="mb-2">
-                                        Title
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name=""
-                                        id=""
-                                    />
-                                    </div>
-                                    <div className="col-lg-6 mb-2">
-                                    <label htmlFor="" className="mb-2">
-                                        Content
-                                    </label>
-                                    <input
-                                        type="text"
-                                        className="form-control"
-                                        name=""
-                                        id=""
-                                    />
-                                    </div>
-                                </div>
-                                <button className="btn btn-primary mt-5">
-                                    <i className="fas fa-plus" /> Add Specifications
-                                </button>
                                 </div>
                             </div>
                             </div>
@@ -652,6 +613,7 @@ const AddProduct = () => {
                                         </div>
                                         <div>
                                             <button
+                                            type="button"
                                             className="btn btn-danger mt-4"
                                             onClick={() => handleRemove(index, setSizes)}>
                                                 <i className="fas fa-trash" /> Remove
@@ -663,6 +625,7 @@ const AddProduct = () => {
                                         <h4 className=''>No Sizes Added.</h4>
                                     )}
                                     <button className="btn btn-primary mt-5"
+                                    type="button"
                                     onClick={()=> handleAddMore(setSizes)}>
                                         <i className="fas fa-plus" /> Add Size
                                     </button>
@@ -714,6 +677,7 @@ const AddProduct = () => {
                                         </div>
                                         <div className='col-lg-2'>
                                             <button className="btn btn-danger mt-4"
+                                            type="button"
                                             onClick={()=> handleRemove(index, setColors)}>
                                                 <i className="fas fa-trash" /> Remove
                                             </button>
@@ -724,6 +688,7 @@ const AddProduct = () => {
                                     <h4 className=''>No Colors Added.</h4>
                                 )}
                                 <button className="btn btn-primary mt-5"
+                                type="button"
                                 onClick={()=>handleAddMore(setColors)}>
                                     <i className="fas fa-plus" /> Add Color
                                 </button>
