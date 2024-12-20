@@ -136,7 +136,6 @@ const StoreHeader = () => {
                         </div>
                         {isLoggedIn() ? (
                             <>
-                                <Link className="text-center bg-link text-white px-4 py-2 rounded-full hover:bg-link-hover" to="/dashboard">Dashboard</Link>
                                 <Link className="text-center bg-link text-white px-4 py-2 rounded-full hover:bg-link-hover" to="/logout">Logout</Link>
                             </>
                         ) : (
