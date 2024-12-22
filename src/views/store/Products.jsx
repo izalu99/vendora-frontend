@@ -89,7 +89,9 @@ const Products = () => {
         const price = product?.price;
         const shipping_amount = product?.shipping_amount;
         const country = currentAddress?.country;
-
+        console.log('product_id', product_id)
+        console.log('user_id', user_id)
+        console.log('country: ', country)
         try{
             const formData = new FormData();
             formData.append("Product ID: ", productId);
@@ -99,9 +101,14 @@ const Products = () => {
             formData.append("price",price)
             formData.append("shipping_amount",shipping_amount)
             formData.append("country",country)
-            formData.append("size",chosenSizes[productId])
-            formData.append("color",chosenColors[productId])
+            formData.append("size",chosenSizes[product_id])
+            formData.append("color",chosenColors[product_id])
             formData.append("cart_id",cart_id)
+            
+            console.log('chosen sizes: ', chosenSizes)
+            console.log('chosen colors: ', chosenColors)
+            console.log('chosen size: ', chosenSizes[productId])
+            console.log('chosen color: ', chosenColors[productId])
 
             const response = await apiInstance.post('cart-view/', formData);
             console.log('response: ', response.data);
@@ -136,10 +143,14 @@ const Products = () => {
             });
     }, []);
 
+    useEffect(()=>{
+        console.log('chosen colors:', chosenColors)
+    },[chosenColors])
+
     return (
-        <div>
-            <main className="mt-5">
-                <div className="flex flex-col space-y-5">
+        <div className='bg-opacity-0'>
+            <main className="mt-5 ml-5 mr-5">
+                <div className="flex flex-col space-y-5 ml-5 mr-5">
                     {/* Section: Category */}
                     <section className="text-center">
                         <div className="flex flex-wrap justify-center">
@@ -182,15 +193,15 @@ const Products = () => {
                                             <h6 className="text-lg font-bold mb-3">${product.price}</h6>
                                             <div className="relative inline-block text-left space-x-2">
                                                 <button
-                                                    className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
+                                                    className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-button-bg text-sm font-medium text-gray-700 hover:bg-accent focus:outline-none"
                                                     type="button"
                                                     id="dropdownMenuButton"
                                                     aria-expanded={OpenVariationMenus[product.pid] ? "true" : "false"}
                                                     aria-haspopup="true"
                                                     onClick={() => toggleVariationMenu(product.pid)}
                                                 >
-                                                    Variation
-                                                    <svg className="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                                    <div className='text-white'>Variation</div>
+                                                    <svg className="-mr-1 ml-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                         <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
                                                     </svg>
                                                 </button>
@@ -219,15 +230,17 @@ const Products = () => {
                                                                 <h6 className="px-4 py-2 text-sm text-gray-700">
                                                                     <b>Color</b>: {chosenColors[product.pid] || ""}
                                                                 </h6>
-                                                                <div className="px-4 py-2 flex flex-wrap">
+                                                                <div className="px-4 py-2 flex flex-wrap m-2">
                                                                     {product.color?.map((color) => (
-                                                                        <button 
-                                                                        onClick={() => chooseColor(product.pid, color.name)} 
-                                                                        key={`${color.id}-${color.name}`} 
-                                                                        style={{backgroundColor: `${color.color_code}`}} 
-                                                                        className="w-6 h-6 rounded-full mr-2 mb-2"
-                                                                        ></button>
-                                                                        
+                                                                        <div key={`${color.id}-${color.name}`} className='flex flex-wrap justify-evenly group' >
+                                                                            <button 
+                                                                            onClick={() => chooseColor(product.pid, color.name)} 
+                                                                            key={`${color.id}-${color.name}`} 
+                                                                            style={{backgroundColor: `#${color.color_code}`}} 
+                                                                            className={`w-6 h-6 rounded-full mr-2 mb-2 group-hover:border group-hover:border-accent`}
+                                                                            ></button>
+                                                                            <div className='text-center align-middle group-hover:text-accent'>{color.name}</div>
+                                                                        </div>
                                                                     ))}
                                                                 </div>
                                                             </>
@@ -247,16 +260,25 @@ const Products = () => {
 
                                                         )}
                                                         <div className="px-4 py-2 flex">
-                                                            <button 
-                                                            className="bg-blue-500 text-white text-xs font-semibold py-1 px-2 rounded mr-2 mb-2"
-                                                            onClick={(e) => handleAddToCart(e, product.pid, product)}
+                                                            <button
+                                                            type="button" 
+                                                            className="bg-button-bg py-1 px-2 rounded mr-2 mb-2"
+                                                            onClick={(e) => handleAddToCart(e, product.id, product)}
                                                             >
-                                                                <i className="fas fa-shopping-cart"></i>
+                                                                <>
+                                                                <i className="fas fa-shopping-cart mr-2 text-white"></i>
+                                                                <div className='text-white'>Cart</div>
+                                                                </>
+                                                                
                                                             </button>
-                                                            <button 
-                                                            className="bg-red-500 text-white text-xs font-semibold py-1 px-2 rounded mr-2 mb-2"
-                                                            onClick={(e) => handleAddToWishlist(e, product.id, userData?.user_id)}>
-                                                                <i className="fas fa-heart"></i>
+                                                            <button
+                                                            type="button" 
+                                                            className="bg-accent py-1 px-2 rounded mr-2 mb-2"
+                                                            onClick={(e) => handleAddToWishlist(e, product?.id, userData?.user_id)}>
+                                                                <>
+                                                                <i className="fas fa-heart mr-2 text-white"></i>
+                                                                <div className='text-white'>Wishlist</div>
+                                                                </>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -265,7 +287,7 @@ const Products = () => {
                                             </div>
                                             <button 
                                             className="bg-red-500 ml-2 text-white text-xs font-semibold py-1 px-2 rounded mt-2"
-                                            onClick={(e) => handleAddToWishlist(e, product.id, userData?.user_id)}>
+                                            onClick={(e) => handleAddToWishlist(e, product?.id, userData?.user_id)}>
                                                 <i className="fas fa-heart"></i>
                                             </button>
                                         </div>

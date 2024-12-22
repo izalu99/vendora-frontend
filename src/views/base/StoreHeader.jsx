@@ -144,10 +144,16 @@ const StoreHeader = () => {
                             <Link className="text-center bg-link text-white px-4 py-2 rounded-full hover:bg-link-hover" to="/register">Register</Link>
                             </>
                         )}
-                        <Link className="text-center bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600" to="/cart/"><i className='fas fa-shopping-cart'></i> <span id='cart-total-items'>{cartCount}</span></Link>
+                        <Link className="text-center bg-accent px-4 py-2 rounded-full" to="/cart/">
+                            <div className='text-white'>
+                                <i className='fas fa-shopping-cart mr-2' />
+                                <span id='cart-total-items'>{cartCount}</span>
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </nav>
+            <div className='w-full h-0.5 bg-primary-text'></div>
         </header>
     );
 };

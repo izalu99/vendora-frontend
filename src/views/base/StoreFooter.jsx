@@ -6,6 +6,7 @@ const StoreFooter = () => {
         className="bg-primary-bg text-center text-lg-start"
         style={{ marginTop: 200 }}
     >
+        <div className='w-full h-0.5 bg-primary-text'></div>
         {/* Grid container */}
         <div className="container p-4">
             <div className="row">

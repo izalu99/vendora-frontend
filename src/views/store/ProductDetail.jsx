@@ -263,27 +263,10 @@ const ProductDetail = () => {
                         <div className="w-full md:w-1/2 px-4 mb-4 md:mb-0">
                             {/* Details */}
                             <div>
-                                <h1 className="fw-bold mb-3">{product.title}</h1>
-                                <div className="flex text-primary items-center">
-                                    <ul className="mb-3 d-flex p-0" style={{ listStyle: "none" }}>
-                                        <li>
-                                            <i className="fas fa-star fa-sm text-yellow-500" title="Bad" />
-                                            <i className="fas fa-star fa-sm text-yellow-500" title="Bad" />
-                                            <i className="fas fa-star fa-sm text-yellow-500" title="Bad" />
-                                            <i className="fas fa-star fa-sm text-yellow-500" title="Bad" />
-                                            <i className="fas fa-star fa-sm text-yellow-500" title="Bad" />
-                                        </li>
-
-                                        <li className="ml-2 text-sm">
-                                            <a href="" className="text-decoration-none">
-                                                <strong className="mr-2">4/5</strong>(2 reviews)
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                                <h1 className="fw-bold mb-3 text-xl text-primary-text">{product.title}</h1>
                                 <h5 className="mb-3">
                                     <s className="text-gray-500 mr-2 text-sm">${product.old_price}</s>
-                                    <span className="">${product.price}</span>
+                                    <span className="text-accent font-bold">${product.price}</span>
                                 </h5>
                                 <p className="text-gray-600">
                                     {product.description? 
@@ -359,7 +342,7 @@ const ProductDetail = () => {
                                                 <div key={color.id} className='flex flex-row items-center'>
                                                     <button 
                                                     className='btn p-3 mr-2 mb-1 color_button' 
-                                                    style={{ background: color.color_code }}
+                                                    style={{ backgroundColor: `#${color.color_code}` }}
                                                     name = 'colorButton'
                                                     id='colorButton'
                                                     onClick={(event) => handleChooseColor(event, color.name)}
@@ -379,18 +362,17 @@ const ProductDetail = () => {
                                     </div>
                                     <button 
                                     type="button" 
-                                    className="btn btn-primary rounded-lg mr-2"
+                                    className="bg-button-bg py-1 px-2 rounded mr-2 mb-2"
                                     onClick={(event) => handleAddToCart(event)}>
-                                        <i className="fas fa-cart-plus mr-2" /> Add to cart
+                                        <i className="fas fa-cart-plus text-white" />
                                     </button>
                                     <button 
-                                    href="#!" 
                                     type="button" 
-                                    className="btn btn-danger rounded-lg" 
+                                    className="bg-accent py-1 px-2 rounded mr-2 mb-2" 
                                     data-mdb-toggle="tooltip" 
                                     title="Add to wishlist"
                                     onClick={(e) => handleAddToWishlist(e, product.id, userData?.user_id)}>
-                                        <i className="fas fa-heart" />
+                                        <i className="fas fa-heart text-white" />
                                     </button>
                                 </div>
                             </div>

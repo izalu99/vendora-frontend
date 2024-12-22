@@ -12,8 +12,9 @@ const GetCurrentAddress = () => {
       fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setAddress(data.address)})
-      
+        setAddress(data.address)
+      })
+        
     }, (error) => {
       console.log('Error getting location: ', error);
     });

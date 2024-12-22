@@ -63,7 +63,7 @@ function App() {
     <CartContext.Provider value={[cartCount, setCartCount]}>
       <BrowserRouter>
       <StoreHeader />
-        <MainWrapper>
+        <MainWrapper className='bg-primary-bg flex-grow'>
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
