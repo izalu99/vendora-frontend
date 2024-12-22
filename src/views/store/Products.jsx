@@ -5,6 +5,7 @@ import apiInstance from "../../utils/axios";
 import GetCurrentAddress from '../plugin/GetCurrentAddress'
 import GetUserData from '../plugin/GetUserData'
 import GetCartId from '../plugin/GetCartId'
+import Hero from "./Hero";
 import { CartContext } from '../plugin/Context';
 
 import Swal from 'sweetalert2'
@@ -150,6 +151,9 @@ const Products = () => {
     return (
         <div className='bg-opacity-0'>
             <main className="mt-5 ml-5 mr-5">
+                <div className='w-full min-h-50 mb-5'>
+                    <Hero />
+                </div>
                 <div className="flex flex-col space-y-5 ml-5 mr-5">
                     {/* Section: Category */}
                     <section className="text-center">
